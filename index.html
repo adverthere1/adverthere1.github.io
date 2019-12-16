@@ -19,18 +19,17 @@
 <script>
     $(function(){
         
-        $(window).scroll(function() {
-            var marketing = $('.marketingBox').css('display');
-            console.log(marketing);
-            if(marketing=='block'){
-                if ($(this).scrollTop() > 100) {
-                    $('.header').css('background-color','white');
-                } else {
-                    $('.header').css('background-color','#152030');
-                }
-            }
-           
-        });
+//        $(window).scroll(function() {
+//            var marketing = $('.marketingBox').css('display');
+//            if(marketing=='block'){
+//                if ($(this).scrollTop() > 100) {
+//                    $('.header').css('background-color','white');
+//                } else {
+//                    $('.header').css('background-color','#152030');
+//                }
+//            }
+//           
+//        });
 
       
         $.menuBtn=function(){
@@ -42,12 +41,11 @@
                 }else{
                     $('.subHeader').hide();
                 }
-                console.log(page);
-                if(page == 'marketingBox'){
-                    $('.header').css('background-color','#152030');
-                }else{
-                    $('.header').css('background-color','white');
-                }
+//                if(page == 'marketingBox'){
+//                    $('.header').css('background-color','#152030');
+//                }else{
+//                    $('.header').css('background-color','white');
+//                }
                 $('.'+page).show();
                 
                  $('html, body').animate({
@@ -61,12 +59,27 @@
             })
         }
         
-        $.adverContact = function(){
-            $('.adverContact').on('click',function(){
-                $('.section').hide();
-                $('.contactBox').show();
+        $.contactBtn = function(){
+            $('.contactBtn, .contactClose, .adverContact').on('click',function(){
+                var display = $('.contactBox').css('display');
+               console.log(display);
+                
+                if(display!='block'){
+                    $('.contactBox').show();
+                    $('.contactSub').animate({width:'100%'},300);
+                    
+                }else{
+                    $('.contactSub').animate({width:'0%'},300);
+                    setTimeout(function(){$.contactClose();},301);
+                }
+                
             })
         }
+        
+        $.contactClose = function(){
+            $('.contactBox').hide();
+        }
+
         
         $.portConImg = function(){
             $('.portConImg').on('click',function(){
@@ -83,6 +96,28 @@
             })
         }
         
+        $.marketText = function(){
+            $('.marketText').on('click',function(){
+                var mkSection = $(this).attr('data-marketing');
+                $('.marketingSection').hide();
+                $('.'+mkSection).show();
+                
+            })
+        }
+        
+        $.topMkBtn = function(){
+            $('.topMkBtn').on('click',function(){
+                var thisImg = $(this).attr('data-no');
+                
+                $('.mkImg_02').hide();
+                $('.'+thisImg).show();
+                
+                $('.topMkBtn').removeClass('activeMenu');
+                $(this).addClass('activeMenu');
+                
+            })
+        }
+        
         
         
         
@@ -90,8 +125,10 @@
         
         $.init = function(){
             $.menuBtn();
-            $.adverContact();
             $.portConImg();
+            $.contactBtn();
+            $.marketText();
+            $.topMkBtn();
         }
         $.init();
         
@@ -121,7 +158,7 @@
             <span class="menuBtn" data-page="adverthereBox">Adverthere</span>
             <span class="menuBtn" data-page="portfolioBox">Portfolio</span>
             <span class="menuBtn" data-page="marketingBox">Marketing</span>
-            <span><span class="contactBtn menuBtn" data-page="contactBox">Contact</span></span>
+            <span><span class="contactBtn" data-page="contactBox">Contact</span></span>
 <!--            <span><a href="/images/logo.png" download><span class="companyBtn">회사소개서</span></a></span>-->
         </div>
         
@@ -132,7 +169,7 @@
 </div>
 
 <div class="subHeader">
-    <span class="subLine"><b class="pointColor_02">Adverthere</b><b class="bold"> - 확실한 기획</b>부터가 <b class="bold">광고의 시작</b>입니다</span>
+    <span class="subLine"><b class="pointColor_02">Adverthere</b> - 마케팅,<b class="bold"> 전략적</b>으로 접근해야 합니다</span>
 </div>
 
 <div class="mainBox section">
@@ -158,25 +195,70 @@
       </div>
    </div>
    <div class="bannerBox_02">
-          <div class="bannerContent bannerContent_02">
-              <b class="bannerHead whiteColor">수치를 통한 마케팅 결과분석</b>
-              <p class="bannerSubline bannerSubline_02">수치 비교를 통해 마케팅 성과를 측정하고 <br>마케팅 전략의 고도화를 위한 지표로 활용합니다.</p>
-          </div>
-<!--
-          <div class="bannerImg">
-              <img class="commonImg" src="images/banner_03.png">
-          </div>
--->
+         <div class="contentInner">
+              <div class="bannerContent bannerContent_02">
+                  <b class="bannerHead whiteColor">온라인마케팅 누구나 저비용 고효율을 원합니다</b>
+                  <p class="bannerSubline bannerSubline_02">애드버데어는 광고 대행 수수료는 마케팅 실행사로써 <br>저비용 고효율 마케팅을 목표로 합니다.</p>
+              </div>
+
+              <div class="bannerImg bannerImg_02">
+                  <img class="commonImg" src="images/banner_08.png">
+              </div>
+        </div>
     </div>
     
     <div class="contentInner">
         <div class="bannerBox">
           <div class="bannerContent">
-              <b class="bannerHead">정확한 분석을 통한 업체별<b class="pointColor"> 맞춤 마케팅</b></b>
-              <p class="bannerSubline">마케팅의 확실한 효과를 얻기 위해 업체에 대한 정확한 분석을 토대로<br> 합리적인 마케팅 전략을 계획합니다.</p>
+              <b class="bannerHead">애드버데어의<b class="pointColor"> 파트너 브랜드</b></b>
+              <p class="bannerSubline">설명이 필요</p>
           </div>
-          <div class="bannerImg">
-              <img class="commonImg" src="images/banner_05.png">
+          <div class="clientLogoBox">
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-02.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-03.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-04.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-05.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-06.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-07.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-08.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-09.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-10.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-11.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-12.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-13.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-14.png">
+              </div>
+              <div class="clientImg">
+                  <img class="commonImg" src="images/clientLogo-15.png">
+              </div>
+              <div class="clientImg">
+                  
+              </div>
           </div>
         </div>
     </div>
@@ -193,7 +275,7 @@
                 <span class="adverContact">문의하기</span>
             </div>
             <div class="bannerImg">
-                <img class="commonImg" src="images/adver_01.png">
+                <img class="commonImg" src="images/banner_05.png">
             </div>
         </div>
     </div>
@@ -278,55 +360,15 @@
                     <div class="portDtUnitBox">
                        <div class="portDetailUnit portDtFirst">
                             <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">가맹모집 및 브랜드 R&D 체결</p>
                         </div>
 
                          <div class="portDetailUnit">
                             <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">종합 온라인 광고 진행</p>
                         </div>
                     </div>
                     
-                </div>
-            </div>
-            
-            <div class="portConUnit">
-                <div class="portConImg">
-                    <img class="commonImg" src="/images/port_02.png">
-                </div>
-                <p class="portConTitle">따뜻한 중고차</p>
-                <div class="portConDetail">
-                     <div class="portDtUnitBox">
-                       <div class="portDetailUnit portDtFirst">
-                            <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
-                            <p class="portDtCon">브랜드 설명</p>
-                        </div>
-
-                         <div class="portDetailUnit">
-                            <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
-                            <p class="portDtCon">브랜드 설명</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="portConUnit">
-                <div class="portConImg">
-                    <img class="commonImg" src="/images/port_03.png">
-                </div>
-                <p class="portConTitle">와이즈데스크</p>
-                <div class="portConDetail">
-                     <div class="portDtUnitBox">
-                       <div class="portDetailUnit portDtFirst">
-                            <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
-                            <p class="portDtCon">브랜드 설명</p>
-                        </div>
-
-                         <div class="portDetailUnit">
-                            <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
-                            <p class="portDtCon">브랜드 설명</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             
@@ -339,12 +381,12 @@
                      <div class="portDtUnitBox">
                        <div class="portDetailUnit portDtFirst">
                             <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">주한페루대사관</p>
                         </div>
 
                          <div class="portDetailUnit">
                             <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">제 3회 페루모다 패션박람회 B2B고객 모집/올해 최대 성과 기록</p>
                         </div>
                     </div>
                 </div>
@@ -352,19 +394,19 @@
             
             <div class="portConUnit">
                 <div class="portConImg">
-                    <img class="commonImg" src="/images/port_05.png">
+                    <img class="commonImg" src="/images/ports_13.png">
                 </div>
-                <p class="portConTitle">해가든</p>
+                <p class="portConTitle">한국청소년단체협의회</p>
                 <div class="portConDetail">
                      <div class="portDtUnitBox">
                        <div class="portDetailUnit portDtFirst">
                             <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">청소년 관련 행정부처 사회단체</p>
                         </div>
 
                          <div class="portDetailUnit">
                             <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">이벤트 참여자 모집/SNS타겟마케팅으로 1주일 50팀 모집</p>
                         </div>
                     </div>
                 </div>
@@ -372,19 +414,19 @@
             
             <div class="portConUnit">
                 <div class="portConImg">
-                    <img class="commonImg" src="/images/port_06.png">
+                    <img class="commonImg" src="/images/ports_04.png">
                 </div>
-                <p class="portConTitle">요조바디</p>
+                <p class="portConTitle">오하랑김치</p>
                 <div class="portConDetail">
                      <div class="portDtUnitBox">
                        <div class="portDetailUnit portDtFirst">
                             <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">오하랑김치</p>
                         </div>
 
                          <div class="portDetailUnit">
                             <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">스토어팜 매출 상승의뢰/실제 구매 후기를 담은 컨텐츠 배포 및 연관검색어에 노출 시키므로 매출율 급증</p>
                         </div>
                     </div>
                 </div>
@@ -392,19 +434,19 @@
             
             <div class="portConUnit">
                 <div class="portConImg">
-                    <img class="commonImg" src="/images/port_07.png">
+                    <img class="commonImg" src="/images/ports_05.png">
                 </div>
-                <p class="portConTitle">평강대부중개</p>
+                <p class="portConTitle">AKmall</p>
                 <div class="portConDetail">
                      <div class="portDtUnitBox">
                        <div class="portDetailUnit portDtFirst">
                             <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">종합 쇼핑몰</p>
                         </div>
 
                          <div class="portDetailUnit">
                             <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">애쉴리가구 브랜드 상위노출 진행</p>
                         </div>
                     </div>
                 </div>
@@ -414,17 +456,40 @@
                 <div class="portConImg">
                     <img class="commonImg" src="/images/port_08.png">
                 </div>
-                <p class="portConTitle">체스터톤스</p>
+                <p class="portConTitle">체스터톤스 코리아</p>
                 <div class="portConDetail">
                      <div class="portDtUnitBox">
                        <div class="portDetailUnit portDtFirst">
                             <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">투자자문, 컨설팅, 자산관리, 종합 부동산 서비스 브랜드</p>
                         </div>
 
                          <div class="portDetailUnit">
                             <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">브랜드 인지도 상승효과 목적/공식블로그 관리대행 진행</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            
+            <div class="portConUnit">
+                <div class="portConImg">
+                    <img class="commonImg" src="/images/ports_12.png">
+                </div>
+                <p class="portConTitle">셀렉티드 바이클리</p>
+                <div class="portConDetail">
+                     <div class="portDtUnitBox">
+                       <div class="portDetailUnit portDtFirst">
+                            <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
+                            <p class="portDtCon">공유주거, 공유오피스 브랜드</p>
+                        </div>
+
+                         <div class="portDetailUnit">
+                            <b class="portDtTitle"><b class="portDtTitle_kr">마케팅</b> MARKETING</b>
+                            <p class="portDtCon">브랜드 인지도 상승효과 목적/공식블로그 관리대행 진행/1호점 만석, 2호점 오픈 2020년 20개 지점 추가 오픈 예정 </p>
                         </div>
                     </div>
                 </div>
@@ -432,19 +497,41 @@
             
             <div class="portConUnit">
                 <div class="portConImg">
-                    <img class="commonImg" src="/images/port_09.png">
+                    <img class="commonImg" src="/images/ports_07.jpg">
                 </div>
-                <p class="portConTitle">이지케이</p>
+                <p class="portConTitle">밀림엔터테인먼트</p>
                 <div class="portConDetail">
                      <div class="portDtUnitBox">
                        <div class="portDetailUnit portDtFirst">
                             <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">콘텐츠 기획 및 제작, 아티스트 발굴/매니저먼트 기업</p>
                         </div>
 
                          <div class="portDetailUnit">
                             <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">신인 아티스트 홍보목적/SNS타겟마케팅 진행/음원 판매율 급증</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <div class="portConUnit">
+                <div class="portConImg">
+                    <img class="commonImg" src="/images/port_06.png">
+                </div>
+                <p class="portConTitle">요조바디라인</p>
+                <div class="portConDetail">
+                     <div class="portDtUnitBox">
+                       <div class="portDetailUnit portDtFirst">
+                            <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
+                            <p class="portDtCon">국내최초 EMS스파 에스테틱 브랜드</p>
+                        </div>
+
+                         <div class="portDetailUnit">
+                            <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
+                            <p class="portDtCon">브랜드 인지도 상승효과 목적/종합 온라인 광고 진행</p>
                         </div>
                     </div>
                 </div>
@@ -452,19 +539,19 @@
             
             <div class="portConUnit">
                 <div class="portConImg">
-                    <img class="commonImg" src="/images/port_10.png">
+                    <img class="commonImg" src="/images/ports_08.png">
                 </div>
-                <p class="portConTitle">마사7</p>
+                <p class="portConTitle">와이즈데스크</p>
                 <div class="portConDetail">
                      <div class="portDtUnitBox">
                        <div class="portDetailUnit portDtFirst">
                             <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">기업 디자인 관리/수정서비스 플랫폼</p>
                         </div>
 
                          <div class="portDetailUnit">
                             <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">브랜드 인지도 상승효과 목적/공식블로그,인스타그램 진행</p>
                         </div>
                     </div>
                 </div>
@@ -474,17 +561,77 @@
                 <div class="portConImg">
                     <img class="commonImg" src="/images/port_11.png">
                 </div>
-                <p class="portConTitle">비즈던트</p>
+                <p class="portConTitle">(주)비즈던트</p>
                 <div class="portConDetail">
                      <div class="portDtUnitBox">
                        <div class="portDetailUnit portDtFirst">
                             <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">기업교육 전문 컨설팅 그룹</p>
                         </div>
 
                          <div class="portDetailUnit">
                             <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
-                            <p class="portDtCon">브랜드 설명</p>
+                            <p class="portDtCon">브랜드 인지도 상승효과 목적/공식블로그 관리대행 진행</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portConUnit">
+                <div class="portConImg">
+                    <img class="commonImg" src="/images/ports_09.png">
+                </div>
+                <p class="portConTitle">제이원휘트니스</p>
+                <div class="portConDetail">
+                     <div class="portDtUnitBox">
+                       <div class="portDetailUnit portDtFirst">
+                            <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
+                            <p class="portDtCon">역삼동 피트니스 브랜드</p>
+                        </div>
+
+                         <div class="portDetailUnit">
+                            <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
+                            <p class="portDtCon">신규 리모델링 오픈 전 브랜드 홍보 의뢰/공식블로그,인스타그램 진행</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portConUnit">
+                <div class="portConImg">
+                    <img class="commonImg" src="/images/ports_10.jpg">
+                </div>
+                <p class="portConTitle">수예디자인</p>
+                <div class="portConDetail">
+                     <div class="portDtUnitBox">
+                       <div class="portDetailUnit portDtFirst">
+                            <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
+                            <p class="portDtCon">주택/상가 인테리어 브랜드</p>
+                        </div>
+
+                         <div class="portDetailUnit">
+                            <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
+                            <p class="portDtCon">브랜드 인지도 상승효과 목적/블로그 상위노출 진행</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portConUnit">
+                <div class="portConImg">
+                    <img class="commonImg" src="/images/ports_11.png">
+                </div>
+                <p class="portConTitle">노보인테리어</p>
+                <div class="portConDetail">
+                     <div class="portDtUnitBox">
+                       <div class="portDetailUnit portDtFirst">
+                            <b class="portDtTitle"><b class="portDtTitle_kr">업체</b> BRAND</b>
+                            <p class="portDtCon">주택/상가 인테리어 브랜드</p>
+                        </div>
+
+                         <div class="portDetailUnit">
+                            <b class="portDtTitle"><b class="portDtTitle_kr">전략</b> STRATEGY</b>
+                            <p class="portDtCon">브랜드 인지도 상승효과 목적/블로그, 카페운영대행 진행</p>
                         </div>
                     </div>
                 </div>
@@ -507,30 +654,282 @@
         <div class="contentInner">
             <div class="marketCon">
                 <p class="marketTitle">Marketing</p>
-                <p class="marketText">검색광고</p>
-                <p class="marketText">SNS광고</p>
-                <p class="marketText">구글애널리틱스</p>
-                <p class="marketText">언론홍보</p>
-                <p class="marketText">체험단마케팅</p>
+                <p class="marketText" data-marketing="searchAd">검색광고</p>
+                <p class="marketText" data-marketing="googleAd">구글애널리틱스</p>
+                <p class="marketText" data-marketing="viralAd">바이럴 마케팅</p>
+                <p class="marketText" data-marketing="newsAd">언론보도</p>
+                <p class="marketText" data-marketing="snsAd">SNS마케팅</p>
             </div>
         
         </div>
     </div>
     
-    <div class="contentInner">
-       <div class="marketBox">
-           <p class="marektHead">구글애널리틱스</p>
-           <p class="marketContents">비즈니스 컨설팅, 광고 마케팅 홈페이지 제작 등을 통해
-            보다앞선 기술력을 바탕으로 클라이언트의 성공적인 비즈니스를 위해
-            최선을 다하고 있습니다.</p>
-       </div>
+    <div class="searchAd marketingSection first">
+        <p class="marektBigHead">SEARCH ADS</p>
+        <div class="backgound_01">
+            <div class="contentInner">
+               <div class="marketBox">
+                   <p class="marektHead">검색광고</p>
+                   <div class="smallLine"></div>
+                   <p class="marketContents">비즈니스 컨설팅, 광고 마케팅 홈페이지 제작 등을 통해
+                    보다앞선 기술력을 바탕으로 클라이언트의 성공적인 비즈니스를 위해
+                    최선을 다하고 있습니다.</p>
+
+                    <div class="flexBox AdImgBox_800">
+                        <div class="searchPicBox">
+                            <img class="commonImg" src="images/naverLogo.png">
+                            <p class="defaultFont">네이버</p>
+                        </div>
+
+                        <div class="searchPicBox">
+                            <img class="commonImg" src="images/daumLogo.png">
+                            <p class="defaultFont">다음</p>
+                        </div>
+
+                        <div class="searchPicBox">
+                            <img class="commonImg" src="images/googleLogo.png">
+                            <p class="defaultFont">구글</p>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <div class="contentInner">
+            <div>
+                
+                픽토그램
+            </div>
+           
+            <div class="flexBox marginTop_50">
+                <div class="searchImgBox">
+                    <img class="commonImg" src="images/searchImg_02.png">
+                    <p class="defaultFont">네이버</p>
+                </div>
+
+                <div class="searchImgBox">
+                    <img class="commonImg" src="images/searchImg_02.png">
+                    <p class="defaultFont">다음</p>
+                </div>
+            </div>
+        </div>
+        <div class="marginBottom_100"></div>
         
     </div>
+    
+    <div class="googleAd marketingSection">
+        <p class="marektBigHead">GOOGLE ANALYTICS</p>
+        <div class="contentInner">
+           <div class="marketBox">
+               <p class="marektHead">구글애널리틱스</p>
+               <div class="smallLine"></div>
+               <p class="marketContents">비즈니스 컨설팅, 광고 마케팅 홈페이지 제작 등을 통해
+                보다앞선 기술력을 바탕으로 클라이언트의 성공적인 비즈니스를 위해
+                최선을 다하고 있습니다.</p>
+                <div class="flexBox marginTop_50">
+                    <div class="searchImgBox">
+                        <img class="commonImg" src="images/searchImg_02.png">
+                        <p class="defaultFont">네이버</p>
+                    </div>
+
+                    <div class="searchImgBox">
+                        <img class="commonImg" src="images/searchImg_02.png">
+                        <p class="defaultFont">다음</p>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+    
+    <div class="viralAd marketingSection">
+        <p class="marektBigHead">VIRAL MARKETING</p>
+        <div class="contentInner">
+           <div class="marketBox">
+               <p class="marektHead">바이럴마케팅</p>
+               <div class="smallLine"></div>
+               <p class="marketContents">비즈니스 컨설팅, 광고 마케팅 홈페이지 제작 등을 통해
+                보다앞선 기술력을 바탕으로 클라이언트의 성공적인 비즈니스를 위해
+                최선을 다하고 있습니다.</p>
+                
+                <div class="marketPlace">
+                    <div class="mkSubBox">
+                        <b class="mkSubHead">브랜드 블로그 운영대행</b>
+                        <p class="mkSubInfo">설명</p>
+                    </div>
+                    <div class="flexBox AdImgBox_800">
+                        <div class="mkPicUnit">
+                            <div class="mkPicImg">
+                                <img class="commonImg" src="images/naverBlog.png">
+                            </div>
+                            <p class="defaultBigFont">네이버</p>
+                            <p class="defaultFont">NAVER</p>
+                        </div>
+                        
+                        <div class="mkPicUnit">
+                            <div class="mkPicImg">
+                                <img class="commonImg" src="images/tBlog.png">
+                            </div>
+                            <p class="defaultBigFont">티스토리</p>
+                            <p class="defaultFont">TSTORY</p>
+                        </div>
+                        
+                        <div class="mkPicUnit">
+                            <div class="mkPicImg">
+                                <img class="commonImg" src="images/daumBlog.png">
+                            </div>
+                            <p class="defaultBigFont">다음</p>
+                            <p class="defaultFont">DAUM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mkSubBox">
+                        <b class="mkSubHead">최적화 상위노출</b>
+                        <p class="mkSubInfo">설명</p>
+                    </div>
+                    
+                    <div class="">
+                        <div class="mkMenuBox flexBox">
+                            <span class="mkMenuUnit topMkBtn activeMenu" data-no="1_img">블로그</span>
+                            <span class="mkMenuUnit topMkBtn" data-no="2_img">카페</span>
+                            <span class="mkMenuUnit topMkBtn" data-no="3_img">지식인</span>
+                        </div>
+                        <div>
+                            <img class="commonImg mkImg_02 first 1_img" src="images/clientLogo-02.png">
+                            <img class="commonImg mkImg_02 2_img" src="">
+                            <img class="commonImg mkImg_02 3_img" src="">
+                        </div>
+                    </div>
+                    
+                    <div class="mkSubBox">
+                        <b class="mkSubHead">연관검색어, 자동완성어</b>
+                        <p class="mkSubInfo">설명</p>
+                    </div>
+                    
+                    <div class="relateBox">
+                        <div class="relateImgBox">
+                            <img class="commonImg" src="images/clientLogo-02.png">
+                        </div>
+                        <div class="relateImgBox">
+                            <img class="commonImg" src="images/clientLogo-02.png">
+                        </div>
+                        <div class="relateImgBox">
+                            <img class="commonImg" src="images/clientLogo-02.png">
+                        </div>
+                    </div>
+                    
+                    <div class="mkSubBox">
+                        <b class="mkSubHead">체험단</b>
+                        <p class="mkSubInfo">설명</p>
+                    </div>
+                    
+                    <div class="flexBox_03 exerciseBox">
+                        <div class='exerciseUnit'>
+                            <img class="commonImg" src="images/clientLogo-02.png">
+                        </div>
+                        <div class='exerciseUnit'>
+                            <img class="commonImg" src="images/clientLogo-02.png">
+                        </div>
+                        <div class='exerciseUnit'>
+                            <img class="commonImg" src="images/clientLogo-02.png">
+                        </div>
+                        <div class='exerciseUnit'>
+                            <img class="commonImg" src="images/clientLogo-02.png">
+                        </div>
+                    </div>
+                    
+                </div>
+           </div>
+        </div>
+    </div>
+    
+    <div class="newsAd marketingSection">
+        <p class="marektBigHead">PRESS RELEASE</p>
+        <div class="contentInner">
+           <div class="marketBox">
+               <p class="marektHead">언론보도</p>
+               <p class="marketContents">비즈니스 컨설팅, 광고 마케팅 홈페이지 제작 등을 통해
+                보다앞선 기술력을 바탕으로 클라이언트의 성공적인 비즈니스를 위해
+                최선을 다하고 있습니다.</p>
+                <div class="flexBox_03 releaseBox">
+                    <div class='releaseUnit'>
+                        <img class="commonImg" src="images/clientLogo-02.png">
+                    </div>
+                    <div class='releaseUnit'>
+                        <img class="commonImg" src="images/clientLogo-02.png">
+                    </div>
+                    <div class='releaseUnit'>
+                        <img class="commonImg" src="images/clientLogo-02.png">
+                    </div>
+                    <div class='releaseUnit'>
+                        <img class="commonImg" src="images/clientLogo-02.png">
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+    
+    <div class="snsAd marketingSection">
+        <p class="marektBigHead">SNS MARKETING</p>
+        <div class="contentInner">
+           <div class="marketBox">
+               <p class="marektHead">SNS마케팅</p>
+               <p class="marketContents">비즈니스 컨설팅, 광고 마케팅 홈페이지 제작 등을 통해
+                보다앞선 기술력을 바탕으로 클라이언트의 성공적인 비즈니스를 위해
+                최선을 다하고 있습니다.</p>
+                <div class="flexBox AdImgBox_800">
+                    <div class="mkPicUnit">
+                        <div class="mkSnsPicImg">
+                            <img class="commonImg" src="images/facebbook.png">
+                        </div>
+                        <p class="defaultBigFont">네이버</p>
+                        <p class="defaultFont">NAVER</p>
+                    </div>
+
+                    <div class="mkPicUnit">
+                        <div class="mkSnsPicImg">
+                            <img class="commonImg" src="images/insta.png">
+                        </div>
+                        <p class="defaultBigFont">티스토리</p>
+                        <p class="defaultFont">TSTORY</p>
+                    </div>
+                </div>
+                <div class="flexBox_03 snsBox">
+                    <div class='snsUnit'>
+                        <img class="commonImg" src="images/clientLogo-02.png">
+                    </div>
+                    <div class='snsUnit'>
+                        <img class="commonImg" src="images/clientLogo-02.png">
+                    </div>
+                    <div class='snsUnit'>
+                        <img class="commonImg" src="images/clientLogo-02.png">
+                    </div>
+                    <div class='snsUnit'>
+                        <img class="commonImg" src="images/clientLogo-02.png">
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+    
+    
+    
 </div>
 
 <div class="contactBox section">
+    <div class="contactSub">
     <div class="contentInner">
+        <div class="contactCanvas">
+            <div class="contactClose"><img class="commonImg" src="images/contactClose.png"></div>
+            <div class="contactUs">
+                <div class="contactUsContent">
+                    <b>애드버데어는</b>
+                    <p>설명필요</p>
+                    <p>연락처</p>
+                    <p>이메일?</p>
+                </div>
+            </div>
+        </div>
         
+    </div>
     </div>
 </div>
 

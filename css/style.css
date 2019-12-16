@@ -2,7 +2,7 @@
 body,html{}
 
 
-.header{width: 100%; position: fixed; top: 0; left: 0; background-color: white;}
+.header{width: 100%; position: fixed; top: 0; left: 0; background-color: white; z-index: 2;}
 .header .headerInner{width: 100%; position: relative; display: flex; justify-content: space-between;}
 .header .headerContent{width: 100%; max-width: 600px; display: flex; justify-content: space-between;}
 .header .headerContent > span{display: inline-block; width: 100%; line-height: 75px; font-size: 14px; text-align: center; font-weight: 400; color: #8194a6; cursor: pointer}
@@ -18,21 +18,24 @@ body,html{}
 .bannerBox{margin-top: 130px;padding-bottom: 50px;}
 .bannerBox_02{margin-top: 130px;background-color: #007fff;}
 .mainBox .bannerContent{width: 100%;margin: 0 auto; text-align: center; max-width: 1140px;}
-.bannerContent_02{padding: 5% 0 0 0;}
+.bannerContent_02{padding: 8% 0 0 0;}
 .bannerMini{    font-size: 14px; font-weight: 300; color: #8194a6; margin-bottom: 10px;}
 .bannerHead{font-size: 40px; line-height: 1.2; font-weight: 500; color: #505050; word-break: keep-all;}
 .bannerSubline{margin-top: 10px; font-size: 20px; line-height: 1.4; color: #8194a6; font-weight: 300; word-break: keep-all;}
 .bannerSubline_02{color:white; opacity: 0.8;}
-.bannerImg{width: 80%; margin: 0 auto; margin-top: 50px; max-width: 1140px;}
+.bannerImg{width: 80%; margin: 0 auto; margin-top: 50px; max-width: 1140px; line-height: 0;}
+.bannerImg_02{padding-bottom: 5%;}
+.clientLogoBox{    display: flex; justify-content: space-between; flex-wrap: wrap; margin:50px 0 100px 0}
+.clientImg{width: 20%; padding: 0 3%; box-sizing: border-box; margin-bottom: 2%;}
 
 
 .adverContact{width: 130px; text-align: center; cursor: pointer; display: inline-block; background-color: #007fff; padding: 10px 0; color: white; font-size: 16px; font-weight: 400; border-radius: 6px; margin-top: 30px;}
-.adverBanner_02{background-color: #f7f9fa; padding: 30px 0;}
-.adverBanner_03{background-color: #25303e; padding: 40px 0 60px 0;}
-.subBannerHead{font-size: 20px; font-weight: 500; color:#152030; text-align: center;}
+.adverBanner_02{background-color: #f7f9fa; padding: 4% 0; margin-top: 50px;}
+.adverBanner_03{background-color: #25303e; padding: 5% 0 5% 0;}
+.subBannerHead{font-size: 30px; font-weight: 500; color:#152030; text-align: center;}
 .subBannerLine{font-size: 16px; font-weight: 300; color: #8194a6; text-align: center; word-break: keep-all; max-width: 800px; margin: 0 auto; line-height: 1.4; margin-top: 10px;}
 .subBannerLogo{width: 80px; margin: 0 auto; margin-bottom: 20px;}
-.subBannerHead_02{font-size: 24px; color: white; font-weight: 500; text-align: center;}
+.subBannerHead_02{font-size: 30px; color: white; font-weight: 500; text-align: center;}
 .flexBox_02{    display: flex; flex-wrap: wrap;}
 .pictoUnit{width:33.3%; margin-top:40px;}
 .pictoImg{    width: 50%; max-width: 90px; margin: auto;}
@@ -45,27 +48,59 @@ body,html{}
 
 .portConBox{margin-top: 100px; margin-bottom: 180px; display: flex; justify-content: space-between; flex-wrap: wrap;}
 .portConUnit{width: 32%;     margin-top: 60px; margin-bottom: 30px;}
-.portConImg{width: 100%; border: 1px solid #ddd; cursor: pointer;}
+.portConImg{width: 100%; border: 1px solid #ddd; cursor: pointer;display: flex;}
 .portConTitle{    text-align: center; color: #505050; font-size: 18px; font-weight: 500; margin-top: 10px;}
 .portConDetail{ width: 100%; box-sizing: border-box;height:0px; overflow: hidden;} 
 .portDetailUnit{margin-top: 30px;}
 .portDtTitle{font-size: 20px; font-weight: 500; color: #cccccc;}
 .portDtTitle_kr{color: #505050;}
-.portDtCon{margin-top: 10px; font-size: 16px; font-weight: 400; color: #505050; word-break: keep-all;}
+.portDtCon{margin-top: 10px; font-size: 16px; font-weight: 300; color: #505050; word-break: keep-all;line-height: 1.4;}
 .portDtUnitBox{    margin-top: 20px; border-top: 3px solid #007fff; box-sizing: border-box;}
 
-.marketTitleBox{    padding-bottom: 50px; padding-top: 74px; background-color: #152030;}
+.marketTitleBox{    padding-bottom: 50px; padding-top: 74px;}
 .marketCon{    text-align: center; padding-top: 40px;}
 .marketTitle{    color: #007fff; font-size: 16px; font-weight: 400; padding-bottom: 20px;}
-.marketText{    color: white; line-height: 1.6; font-size: 20px;}
+.marketText{    color: #505050; line-height: 1.6; font-size: 20px; cursor: pointer;}
 .marketBox{padding: 50px 0;}
-.marektHead{}
-.marketContents{}
+.marektHead{    text-align: center; font-size: 26px; font-weight: 500; color: #282828; line-height: 1.4;}
+.marketContents{text-align: center; max-width: 600px; margin: 0 auto; line-height: 1.4; font-weight: 300; font-size: 16px; margin-top: 10px; color: #505050; word-break: keep-all;}
+.marketingSection{display: none;}
+
+.AdImgBox_800{max-width: 800px; margin: 0 auto; padding-top:50px;}
+.searchPicBox{text-align: center; width: 25%;}
+.defaultBigFont{  color: #282828; font-size: 18px; font-weight: 500; text-align: center; line-height: 1.4; margin-top: 10px;}
+.defaultFont{font-size: 15px; font-weight: 300; color: #505050; line-height: 1.4;text-align: center;}
+.marektBigHead{font-size: 70px; font-weight: bolder; text-align: center; color: #f0f0f0; margin-bottom: 30px;}
+.backgound_01{background-color: #f7f9fa;}
+.marketingSection{margin: 50px 0}
+.smallLine{    height: 1px; background-color: #505050; width: 30px; margin: 15px auto;}
+.searchImgBox{width: 49%;}
+.marginTop_50{margin-top: 50px;}
+.marginBottom_100{margin-bottom: 100px;}
+.mkSubBox{padding: 100px 0 70px 0; text-align: center;}
+.mkSubHead{    font-size: 20px; color: #282828; font-weight: 500; line-height: 1.4;}
+.mkSubInfo{    font-size: 15px; font-weight: 300; line-height: 1.4; margin: 0 auto; margin-top: 10px; max-width: 600px;}
+.mkPicUnit{}
+.mkMenuUnit{    text-align: center; display: block; width: 34%; padding: 10px; background-color: #f0f0f0; cursor: pointer; color: #505050;}
+.activeMenu{background-color: #505050; color: white;}
+.mkImg_02{display: none;}
+.exerciseUnit{width: 50%;}
+.releaseUnit{width: 50%;}
+.mkSnsPicImg{width: 50%; margin: 0 auto; min-width: 130px;}
+.snsBox{margin-top: 5%;}
+.snsUnit{width:50%;}
 
 
 
 
 
+
+.contactBox{ display: none;    width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 3;}
+.contactSub{background-color: #007fff; width: 0px; margin: 0 auto; height: 100%;}
+.contactCanvas{width: 100%; height: 100%; position: relative;}
+.contactClose{position: absolute; right: 0; top: 30px; width: 50px; cursor: pointer;}
+.contactUs{    display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;}
+.contactUsContent{    width: 550px; padding: 20px; box-sizing: border-box; background-color: white;}
 
 
 
@@ -84,12 +119,29 @@ body,html{}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.first{display: block;}
 .adverthereBox{display: none;}
 .portfolioBox{display: none;}
 .marketingBox{display: none;}
 .bold{font-weight: 500;}
 .flexBox{display: flex; align-items: center; justify-content: space-between;}
-.contentInner{max-width: 1140px; width: 100%; margin: 0 auto}
+.flexBox_03{display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;}
+.contentInner{max-width: 1140px; width: 100%;height: 100%; margin: 0 auto}
 .whiteColor{color:white;}
 .pointColor{color:#007fff;}
 .pointColor_02{color:#8194a6}
