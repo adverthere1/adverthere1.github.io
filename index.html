@@ -102,6 +102,9 @@
                 $('.marketingSection').hide();
                 $('.'+mkSection).show();
                 
+                $('.activeMkMenu').removeClass('activeMkMenu');
+                $(this).addClass('activeMkMenu');
+                
             })
         }
         
@@ -669,7 +672,7 @@
         <div class="contentInner">
             <div class="marketCon">
                 <p class="marketTitle">Marketing</p>
-                <p class="marketText" data-marketing="searchAd">키워드광고(검색광고)</p>
+                <p class="marketText activeMkMenu" data-marketing="searchAd">키워드광고(검색광고)</p>
                 <p class="marketText" data-marketing="googleAd">구글애널리틱스</p>
                 <p class="marketText" data-marketing="viralAd">바이럴 마케팅</p>
                 <p class="marketText" data-marketing="newsAd">언론보도</p>
