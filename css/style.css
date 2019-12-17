@@ -104,9 +104,10 @@ body,html{}
 .contactCanvas{width: 100%; height: 100%; position: relative;}
 .contactClose{position: absolute; right: 0; top: 30px; width: 50px; cursor: pointer;}
 .contactUs{    display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;}
-.contactUsContent{    width: 550px; padding: 20px; box-sizing: border-box; background-color: white;}
-
-
+.contactUsContent{    width: 450px; padding: 30px; box-sizing: border-box; background-color: white;}
+.contactB{font-size: 24px; font-weight: 600; color: #505050;}
+.contactP{font-size: 15px; font-weight: 100; color: #505050; line-height: 1.4; margin-top: 15px;}
+.contactMail{    margin-top: 30px; font-size: 16px; font-weight: 500; color: #505050;}
 
 
 .footer{    background-color: #152030; padding: 30px 0; width: 100%;}
